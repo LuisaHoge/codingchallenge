@@ -462,17 +462,15 @@
   <div *ngFor="let topArtist of topArtists" (click)="searchMusic(topArtist.name)">
    
       <a class="card" id="mycard" target="_blank" rel="noopener">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
+        <div matBadge="{{ topArtist.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false" class="demo-section">
+        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/></div>
         <div class="card-body">
-          <h5 class="card-title">Nr.{{ topArtist.rank }}: {{ topArtist.name }}</h5>
+          <h5 class="card-title">{{ topArtist.name }}</h5>
           <p class="card-text">Listeners: {{ topArtist.playcount | number }}</p>
         </div>
       </a>
     </div>
   </div>
-
-  <div matBadge="4" matBadgeOverlap="false" class="demo-section">Text with a badge</div>
-
 
 
   <div class="card-container">

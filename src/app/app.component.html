@@ -353,11 +353,6 @@
   <!-- Resources -->
   <h2>Resources</h2>
   <p>Here are some links to help you get started:</p>
-
-
-  
-  <h1 class="title is-1">Need Music?</h1>
-  <p class="subtitle">Browse your favorite artists and see their top 5 songs using the LastFM API</p>
   
 
     <div class="field has-addons">
@@ -435,33 +430,48 @@
         </div>
       </div>
     </div>
+
+     <!-- Display Albums -->
+     <h1 class="title has-text-centered">Top 5 Albums</h1>
+     <div *ngFor="let album of albums">
+       <div class="columns">
+         <div class="column">
+           <nav class="panel">
+             <div class="panel-block">
+               <div class="column is-8">
+                 <p class="title is-4 has-text-info"><a href="{{ album.url }}" target="_blank">{{ album.name }}</a></p>
+               </div>
+               <div class="column">
+                 <p class="subtitle has-white-text has-text-centered">Rank <br><span class="tag is-light">{{ album.rank }}</span></p>
+               </div>
+               <div class="column">
+                 <p class="subtitle has-white-text has-text-centered">Playcount <br><span class="tag is-info">{{ album.playcount | number }}</span></p>
+               </div>
+             </div>
+           </nav>
+         </div>
+       </div>
+     </div>
   </div>
 
 
   <div class="fadein" *ngIf="searchResult">
-  <h1 class="title has-text-centered">Top 5 Artists</h1>
-  <div *ngFor="let topArtist of topArtists">
-    <div class="columns">
-      <div class="column">
-        <nav class="panel">
-          <div class="panel-block">
-            <div class="column is-8">
-              <button class="button is-link" (click)="searchMusic(topArtist.name)" >click for more info</button>
-              <p class="title is-4 has-text-info">{{ topArtist.name }}</p>
-            </div>
-            <div class="column">
-              <p class="subtitle has-white-text has-text-centered">Rank <br><span class="tag is-light">{{ topArtist.rank }}</span></p>
-            </div>
-            <div class="column">
-              <p class="subtitle has-white-text has-text-centered">Listeners <br><span class="tag is-info">{{ topArtist.playcount | number }}</span></p>
-            </div>
-          </div>
-        </nav>
-      </div>
+  <h1 class="title has-text-centered">Top 5 Artists</h1> 
+  </div>
+  <div class="card-container">
+  <div *ngFor="let topArtist of topArtists" (click)="searchMusic(topArtist.name)">
+   
+      <a class="card" id="mycard" target="_blank" rel="noopener">
+        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
+        <div class="card-body">
+          <h5 class="card-title">Nr.{{ topArtist.rank }}: {{ topArtist.name }}</h5>
+          <p class="card-text">Listeners: {{ topArtist.playcount | number }}</p>
+        </div>
+      </a>
     </div>
   </div>
-</div>
 
+  <div matBadge="4" matBadgeOverlap="false" class="demo-section">Text with a badge</div>
 
 
 

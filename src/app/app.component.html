@@ -359,22 +359,27 @@
   <h1 class="title is-1">Need Music?</h1>
   <p class="subtitle">Browse your favorite artists and see their top 5 songs using the LastFM API</p>
   
-  <form (ngSubmit)="searchMusic()">
+
     <div class="field has-addons">
       <div class="control has-icons-left is-expanded">
         <input class="input" type="text" name="searchStr" [(ngModel)]="searchStr" placeholder="Search Artists">
         <span class="icon is-small is-left"><i class="fab fa-lastfm"></i></span>
       </div>
-      <div class="control"><button class="button is-link">Search</button></div>
+      <div class="control"><button class="button is-link" (click)="searchMusic(searchStr)">Search</button></div>
       <div class="control"><a class="button is-info" (click)="reset()">Reset</a></div>
     </div>
-  </form><br>
+<br>
 
   <!--3 country buttons-->
   <button class="button is-link" (click)="searchTopArtists('new zealand')">Search topartists in new zealand</button>
   <button class="button is-link" (click)="searchTopArtists('japan')">Search topartists in japan</button>
   <button class="button is-link" (click)="searchTopArtists('canada')">Search topartists in canada</button>
   
+
+
+
+
+
   <div class="fadein" *ngIf="searchResult">
     <!-- Display Artist -->
     <div class="box">
@@ -441,6 +446,7 @@
         <nav class="panel">
           <div class="panel-block">
             <div class="column is-8">
+              <button class="button is-link" (click)="searchMusic(topArtist.name)" >click for more info</button>
               <p class="title is-4 has-text-info">{{ topArtist.name }}</p>
             </div>
             <div class="column">

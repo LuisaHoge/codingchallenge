@@ -64,9 +64,9 @@ export class AppComponent {
 
   constructor(private apiService: ApiService) { }
 
-  searchMusic() {
+  searchMusic(artist: string) {
     this.searchResult = true;
-    this.apiService.searchMusic(this.searchStr, 'getinfo').subscribe((res: any) => {
+    this.apiService.searchMusic(artist, 'getinfo').subscribe((res: any) => {
       this.artist.name = res.artist.name;
       this.artist.image = res.artist.image[2]['#text'];
       this.artist.listeners = res.artist.stats.listeners;
@@ -75,7 +75,7 @@ export class AppComponent {
       this.artist.url = res.artist.url;
     });
 
-    this.apiService.searchMusic(this.searchStr, 'gettoptracks').subscribe((res: any) => {
+    this.apiService.searchMusic(artist, 'gettoptracks').subscribe((res: any) => {
         this.tracks[0].name = res.toptracks.track[0].name;
         this.tracks[0].url = res.toptracks.track[0].url;
         this.tracks[0].listeners = res.toptracks.track[0].listeners;

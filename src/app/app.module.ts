@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatTabsModule} from '@angular/material/tabs'; 
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -354,6 +354,69 @@
   <h2>Resources</h2>
   <p>Here are some links to help you get started:</p>
   
+  <mat-tab-group (selectedIndexChange)="myTabSelectedIndexChange($event)">
+    <mat-tab label="New Zealand"> 
+     
+      <div class="fadein" *ngIf="searchResult">
+        <h1 class="title has-text-centered">Top 5 Artists</h1> 
+        </div>
+        <div class="card-container">
+        <div *ngFor="let topArtist of topArtists" (click)="searchMusic(topArtist.name)">
+         
+            <a class="card" id="mycard" target="_blank" rel="noopener">
+              <div matBadge="{{ topArtist.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false" class="demo-section">
+              <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/></div>
+              <div class="card-body">
+                <h5 class="card-title">{{ topArtist.name }}</h5>
+                <p class="card-text">Listeners: {{ topArtist.playcount | number }}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      
+      </mat-tab>
+    <mat-tab label="Japan">
+      
+      <div class="fadein" *ngIf="searchResult">
+        <h1 class="title has-text-centered">Top 5 Artists</h1> 
+        </div>
+        <div class="card-container">
+        <div *ngFor="let topArtist of topArtists" (click)="searchMusic(topArtist.name)">
+         
+            <a class="card" id="mycard" target="_blank" rel="noopener">
+              <div matBadge="{{ topArtist.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false" class="demo-section">
+              <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/></div>
+              <div class="card-body">
+                <h5 class="card-title">{{ topArtist.name }}</h5>
+                <p class="card-text">Listeners: {{ topArtist.playcount | number }}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+    </mat-tab>
+    <mat-tab label="Canada"> 
+      
+      <div class="fadein" *ngIf="searchResult">
+        <h1 class="title has-text-centered">Top 5 Artists</h1> 
+        </div>
+        <div class="card-container">
+        <div *ngFor="let topArtist of topArtists" (click)="searchMusic(topArtist.name)">
+         
+            <a class="card" id="mycard" target="_blank" rel="noopener">
+              <div matBadge="{{ topArtist.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false" class="demo-section">
+              <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/></div>
+              <div class="card-body">
+                <h5 class="card-title">{{ topArtist.name }}</h5>
+                <p class="card-text">Listeners: {{ topArtist.playcount | number }}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      
+      </mat-tab>
+  </mat-tab-group>
+
 
     <div class="field has-addons">
       <div class="control has-icons-left is-expanded">

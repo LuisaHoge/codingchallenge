@@ -45,6 +45,27 @@ export class AppComponent {
   
   artistRank: string = "artist rank";
 
+ 
+  myTabSelectedIndexChange(index: number) {
+    console.log('Selected index: ' + index);
+    if(index == 0){
+      this.searchTopArtists("New Zealand");
+    }
+    else if(index == 1){
+      this.searchTopArtists("Japan");
+    }
+    else{
+      this.searchTopArtists("Canada");
+    }
+ } 
+
+
+ ngOnInit(){
+  this.myTabSelectedIndexChange(0);
+ }
+ 
+
+
   artist: Artist = {
     name: '',
     image: '',

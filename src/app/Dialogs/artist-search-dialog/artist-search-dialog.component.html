@@ -1,0 +1,89 @@
+<h1 mat-dialog-title>Hi</h1>
+<div mat-dialog-content>
+  
+    <div class="fadein">
+        <!-- Display Artist -->
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-128x128">
+                <a href="{{ artists.url }}" target="_blank"><img src="{{ artists.image }}" alt="artistsImage"></a>
+              </figure>
+            </div>
+            <div class="media-content is-clipped">
+              <div class="content">
+                <a class="has-text-info" href="{{ artists.url }}" target="_blank"><strong>{{ artists.name }}</strong></a>
+                  <br> <div innerHTML="{{ artists.summary }}"></div>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-left">
+                  <div class="level-item">
+                    <div class="tags has-addons">
+                      <span class="tag is-dark">Listeners</span>
+                      <span class="tag is-info">{{ artists.listeners | number }}</span>
+                    </div>
+                  </div>
+                  <div class="level-item">
+                    <div class="tags has-addons">
+                      <span class="tag is-dark">Playcount</span>
+                      <span class="tag is-info"> {{ artists.playcount | number }}</span>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </article>
+        </div>
+      
+        <!-- Display Tracks -->
+        <h1 class="title has-text-centered">Top 5 Tracks {{data1}}</h1>
+        <div *ngFor="let track of [data.track]">
+          <div class="columns">
+            <div class="column">
+              <nav class="panel">
+                <div class="panel-block">
+                  <div class="column is-8">
+                    <p class="title is-4 has-text-info"><a href="{{ track.url }}" target="_blank">{{ track.name }}</a></p>
+                  </div>
+                  <div class="column">
+                    <p class="subtitle has-white-text has-text-centered">Rank <br><span class="tag is-light">{{ track.rank }}</span></p>
+                  </div>
+                  <div class="column">
+                    <p class="subtitle has-white-text has-text-centered">Listeners <br><span class="tag is-info">{{ track.listeners | number }}</span></p>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+    
+         <!-- Display Albums -->
+         <h1 class="title has-text-centered">Top 5 Albums</h1>
+         <div *ngFor="let album of [albums]">
+           <div class="columns">
+             <div class="column">
+               <nav class="panel">
+                 <div class="panel-block">
+                   <div class="column is-8">
+                     <p class="title is-4 has-text-info"><a href="{{ albums.url }}" target="_blank">{{ albums.name }}</a></p>
+                   </div>
+                   <div class="column">
+                     <p class="subtitle has-white-text has-text-centered">Rank <br><span class="tag is-light">{{ albums.rank }}</span></p>
+                   </div>
+                   <div class="column">
+                     <p class="subtitle has-white-text has-text-centered">Playcount <br><span class="tag is-info">{{ albums.playcount | number }}</span></p>
+                   </div>
+                 </div>
+               </nav>
+             </div>
+           </div>
+         </div>
+      </div>
+    
+    
+    
+ 
+</div>
+<div mat-dialog-actions>
+  <button mat-button>No Thanks</button>
+</div>

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ApiService} from '../app/Services/api.service';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { ArtistSearchDialogComponent } from './Dialogs/artist-search-dialog/artist-search-dialog.component';
 
 export interface Artist {
   name: string;
@@ -8,6 +10,12 @@ export interface Artist {
   playcount: number;
   summary: string;
   url: string;
+}
+
+export interface DialogData {
+  artist: Artist;
+  track: Track;
+  album: Album;
 }
 
 export interface Track {
@@ -24,7 +32,6 @@ export interface Album {
   url: string;
 }
 
-
 export interface TopArtistsInCountry{
   rank: number;
   name: string;
@@ -38,12 +45,11 @@ export interface TopArtistsInCountry{
 })
 
 export class AppComponent {
+
+
   title = 'lastFmApp';
 
   searchStr: string = "";
-  searchResult: boolean = true;
-  
-  artistRank: string = "artist rank";
 
  
   myTabSelectedIndexChange(index: number) {
@@ -60,9 +66,9 @@ export class AppComponent {
  } 
 
 
- ngOnInit(){
+ /*ngOnInit(){
   this.myTabSelectedIndexChange(0);
- }
+ }*/
  
 
 
@@ -89,6 +95,11 @@ export class AppComponent {
     { rank: 3, name: '', playcount: 0},
     { rank: 4, name: '', playcount: 0},
     { rank: 5, name: '', playcount: 0},
+    { rank: 6, name: '', playcount: 0},
+    { rank: 7, name: '', playcount: 0},
+    { rank: 8, name: '', playcount: 0},
+    { rank: 9, name: '', playcount: 0},
+    { rank: 10, name: '', playcount: 0},
   ];
 
   albums: Album[] = [
@@ -99,10 +110,14 @@ export class AppComponent {
     { name: '', url: '', rank: 5, playcount: 0 },
   ];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private dialog: MatDialog) { }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ArtistSearchDialogComponent, {
+    data: {artist: this.artist, track: this.tracks, album: this.albums}});
+  }
 
   searchMusic(artist: string) {
-    this.searchResult = true;
     this.apiService.searchMusic(artist, 'getinfo').subscribe((res: any) => {
       this.artist.name = res.artist.name;
       this.artist.image = res.artist.image[2]['#text'];
@@ -147,6 +162,7 @@ export class AppComponent {
       this.albums[4].url = res.topalbums.album[4].url;
       this.albums[4].playcount = res.topalbums.album[4].playcount;
     });
+    this.openDialog();
   }
 
  
@@ -167,11 +183,25 @@ searchTopArtists(countryname: string){
 
     this.topArtists[4].name = res.topartists.artist[4].name;
     this.topArtists[4].playcount = res.topartists.artist[4].listeners;
+
+    this.topArtists[5].name = res.topartists.artist[5].name;
+    this.topArtists[5].playcount = res.topartists.artist[5].listeners;
+
+    this.topArtists[6].name = res.topartists.artist[6].name;
+    this.topArtists[6].playcount = res.topartists.artist[6].listeners;
+
+    this.topArtists[7].name = res.topartists.artist[7].name;
+    this.topArtists[7].playcount = res.topartists.artist[7].listeners;
+
+    this.topArtists[8].name = res.topartists.artist[8].name;
+    this.topArtists[8].playcount = res.topartists.artist[8].listeners;
+
+    this.topArtists[9].name = res.topartists.artist[9].name;
+    this.topArtists[9].playcount = res.topartists.artist[9].listeners;
   });
 }
 
   reset() {
-    this.searchStr = "";
-    this.searchResult = false;
+   // this.searchStr = "";
   }
 }

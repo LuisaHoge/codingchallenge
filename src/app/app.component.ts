@@ -114,7 +114,7 @@ export class AppComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ArtistSearchDialogComponent, {
-    data: {artist: this.artist, track: this.tracks, album: this.albums}});
+    data: {artist: this.artist, track: this.tracks[0], album: this.albums}});
   }
 
   searchMusic(artist: string) {

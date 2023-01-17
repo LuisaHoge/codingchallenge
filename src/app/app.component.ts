@@ -17,6 +17,7 @@ export interface DialogData {
   //track: Array<string>;
   track1: Track;
   track2: Track;
+  tracky: Track;
   album: Album;
 }
 
@@ -117,7 +118,7 @@ export class AppComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ArtistSearchDialogComponent, {
-    data: {artist: this.artist, track1: this.tracks[0], track2:this.tracks[1], album: this.albums}});
+    data: {artist: this.artist, track1: this.tracks[0], track2:this.tracks[1], tracky: this.tracks, album: this.albums}});
   }
 
   searchMusic(artist: string) {

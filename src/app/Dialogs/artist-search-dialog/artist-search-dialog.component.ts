@@ -23,8 +23,11 @@ export class ArtistSearchDialogComponent {
    arr: Array<any> = [];
    
    butti(){
-    this.arr.push(this.data.track1);
-    this.arr.push(this.data.track2);
+  //  this.arr.push(this.data.track1);
+  //  this.arr.push(this.data.track2);
+    console.log(this.arr);
+
+    this.arr.push(this.data.tracky);
     console.log(this.arr);
    }
 

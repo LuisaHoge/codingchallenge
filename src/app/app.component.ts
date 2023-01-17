@@ -14,11 +14,16 @@ export interface Artist {
 
 export interface DialogData {
   artist: Artist;
-  //track: Array<string>;
+  track0: Track;
   track1: Track;
   track2: Track;
-  tracky: Track;
-  album: Album;
+  track3: Track;
+  track4: Track;
+  album0: Album;
+  album1: Album;
+  album2: Album;
+  album3: Album;
+  album4: Album;
 }
 
 export interface Track {
@@ -118,7 +123,17 @@ export class AppComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ArtistSearchDialogComponent, {
-    data: {artist: this.artist, track1: this.tracks[0], track2:this.tracks[1], tracky: this.tracks, album: this.albums}});
+    data: {artist: this.artist, 
+          track0: this.tracks[0], 
+          track1: this.tracks[1], 
+          track2: this.tracks[2],
+          track3: this.tracks[3],
+          track4: this.tracks[4],
+          album0: this.albums[0],
+          album1: this.albums[1],
+          album2: this.albums[2],
+          album3: this.albums[3],
+          album4: this.albums[4]}});
   }
 
   searchMusic(artist: string) {
@@ -135,26 +150,12 @@ export class AppComponent {
  
    this.apiService.searchMusic(artist, 'gettoptracks').subscribe((res: any) => {
         this.tracks[0].name = res.toptracks.track[0].name;
-  
-        this.tracknames.push(this.tracks[0].name);
-        
         this.tracks[0].url = res.toptracks.track[0].url;
-
-
         this.tracks[0].listeners = res.toptracks.track[0].listeners;
-
         this.tracks[1].name = res.toptracks.track[1].name;
-        this.tracknames.push(this.tracks[1].name);
-
-
         this.tracks[1].url = res.toptracks.track[1].url;
         this.tracks[1].listeners = res.toptracks.track[1].listeners;
-
         this.tracks[2].name = res.toptracks.track[2].name;
-        this.tracknames.push(this.tracks[2].name);
-
-        console.log(this.tracknames);
-
         this.tracks[2].url = res.toptracks.track[2].url;
         this.tracks[2].listeners = res.toptracks.track[2].listeners;
         this.tracks[3].name = res.toptracks.track[3].name;

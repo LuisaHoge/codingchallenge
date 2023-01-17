@@ -36,8 +36,8 @@
         </div>
       
          Display Tracks 
-        <h1 class="title has-text-centered" (click)="butti()">Top 5 Tracks</h1>
-        <div *ngFor="let track of arr">
+        <h1 class="title has-text-centered">Top 5 Tracks</h1>
+        <div *ngFor="let track of tracksDialog">
           <div class="columns">
             <div class="column">
               <nav class="panel">
@@ -56,42 +56,22 @@
             </div>
           </div>
         </div>
-
-       <!-- <div *ngFor="let track of [data.track2]">
-            <div class="columns">
-              <div class="column">
-                <nav class="panel">
-                  <div class="panel-block">
-                    <div class="column is-8">
-                      <p class="title is-4 has-text-info"><a href="" target="_blank">{{ track.name }}</a></p>
-                    </div>
-                    <div class="column">
-                      <p class="subtitle has-white-text has-text-centered">Rank <br><span class="tag is-light">{{track.rank}}</span></p>
-                    </div>
-                    <div class="column">
-                      <p class="subtitle has-white-text has-text-centered">Listeners <br><span class="tag is-info">{{track.listeners}}</span></p>
-                    </div>
-                  </div>
-                </nav>
-              </div>
-            </div>
-          </div>-->
-    
+      
          <!-- Display Albums -->
          <h1 class="title has-text-centered">Top 5 Albums</h1>
-         <div *ngFor="let album of [albums]">
+         <div *ngFor="let album of albumsDialog">
            <div class="columns">
              <div class="column">
                <nav class="panel">
                  <div class="panel-block">
                    <div class="column is-8">
-                     <p class="title is-4 has-text-info"><a href="{{ albums.url }}" target="_blank">{{ albums.name }}</a></p>
+                     <p class="title is-4 has-text-info"><a href="{{ album.url }}" target="_blank">{{ album.name }}</a></p>
                    </div>
                    <div class="column">
-                     <p class="subtitle has-white-text has-text-centered">Rank <br><span class="tag is-light">{{ albums.rank }}</span></p>
+                     <p class="subtitle has-white-text has-text-centered">Rank <br><span class="tag is-light">{{ album.rank }}</span></p>
                    </div>
                    <div class="column">
-                     <p class="subtitle has-white-text has-text-centered">Playcount <br><span class="tag is-info">{{ albums.playcount | number }}</span></p>
+                     <p class="subtitle has-white-text has-text-centered">Playcount <br><span class="tag is-info">{{ album.playcount | number }}</span></p>
                    </div>
                  </div>
                </nav>

@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { ApiService } from '../app/Services/api.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ArtistSearchDialogComponent } from './Dialogs/artist-search-dialog/artist-search-dialog.component';
+import { CompareartistsComponent } from './Dialogs/Compare Artists/compareartists/compareartists.component';
 
 export interface Artist {
   name: string;
@@ -119,7 +120,7 @@ export class AppComponent {
     { name: '', image: '', url: '', rank: 5, playcount: 0 },
   ];
 
-  constructor(private apiService: ApiService, private dialog: MatDialog) { }
+  constructor(private apiService: ApiService, private dialog: MatDialog, private CAdialog: MatDialog) { }
 
 
   openDialog(): void {
@@ -137,6 +138,12 @@ export class AppComponent {
         album3: this.albums[3],
         album4: this.albums[4]
       }
+    });
+  }
+
+  openCompareArtistDialog(): void{
+    const dialogRef = this.CAdialog.open(CompareartistsComponent, {
+      data: {}
     });
   }
 
@@ -207,8 +214,6 @@ export class AppComponent {
     this.openDialog();
   }
 
-
-
   searchTopArtists(countryname: string) {
     this.apiService.searchTopArtistsInCountry(countryname).subscribe((res: any) => {
       this.topArtists[0].name = res.topartists.artist[0].name;
@@ -245,5 +250,9 @@ export class AppComponent {
 
   reset() {
     // this.searchStr = "";
+  }
+
+  compareArtists(){
+    this.openDialog();
   }
 }

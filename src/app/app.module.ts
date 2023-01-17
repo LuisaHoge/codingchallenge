@@ -17,11 +17,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatExpansionModule} from '@angular/material/expansion'; 
 import {MatIconModule} from '@angular/material/icon';
+import { CompareartistsComponent } from './Dialogs/Compare Artists/compareartists/compareartists.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ArtistSearchDialogComponent
+    ArtistSearchDialogComponent,
+    CompareartistsComponent
   ],
   imports: [
     BrowserModule,

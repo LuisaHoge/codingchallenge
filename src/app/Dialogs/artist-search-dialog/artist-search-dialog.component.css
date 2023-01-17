@@ -7,14 +7,8 @@
     border-radius: 4px;
     border: 1px solid #eee;
     background-color: #fafafa;
-    height: 50px;
-    width: 50px;
-    /*display: inline-block;*/
+    display: inline-block;
     margin: 0 8px 16px;
-    padding-right: 16px;
-   /*flex-direction: row;
-    justify-content: center;
-    align-items: center;*/
     transition: all 0.2s ease-in-out;
     line-height: 24px;
 }
@@ -22,7 +16,7 @@
 .card-container{
   display: flex;
   align-items: center;
-  padding-right: 16px;
+  margin-right: auto;
   justify-content: space-evenly;
 }
 

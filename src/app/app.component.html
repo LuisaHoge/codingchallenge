@@ -341,9 +341,7 @@
 
   <mat-tab-group (selectedIndexChange)="myTabSelectedIndexChange($event)">
     <mat-tab label="New Zealand (64)"> 
-     
-      <div class="fadein">
-        </div>
+       
         <div class="card-container">
         <div *ngFor="let topArtist of topArtists" (click)="searchMusic(topArtist.name)">
             <a class="card" id="mycard" target="_blank" rel="noopener">
@@ -356,7 +354,6 @@
             </a>
           </div>
         </div>
-      
       </mat-tab>
 
 
@@ -453,7 +450,7 @@
                 <p class="subtitle has-white-text has-text-centered">Rank <br><span class="tag is-light">{{ track.rank }}</span></p>
               </div>
               <div class="column">
-                <p class="subtitle has-white-text has-text-centered">Listeners <br><span class="tag is-info">{{ track.listeners | number }}</span></p>
+                <p class="subtitle has-white-text has-text-centered">Playcount <br><span class="tag is-info">{{ track.playcount | number }}</span></p>
               </div>
             </div>
           </nav>

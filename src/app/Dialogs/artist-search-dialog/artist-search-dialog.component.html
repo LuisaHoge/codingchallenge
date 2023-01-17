@@ -1,6 +1,7 @@
-<h1 mat-dialog-title>Hi</h1>
+<h1 mat-dialog-title>{{artists.name}}</h1>
 <div mat-dialog-content>
-  
+
+
     <div class="fadein">
         <!-- Display Artist -->
         <div class="box">
@@ -19,7 +20,7 @@
                 <div class="level-left">
                   <div class="level-item">
                     <div class="tags has-addons">
-                      <span class="tag is-dark">Listeners</span>
+                      <span class="tag is-dark">Listeners </span>
                       <span class="tag is-info">{{ artists.listeners | number }}</span>
                     </div>
                   </div>
@@ -34,14 +35,32 @@
             </div>
           </article>
         </div>
-      
-         Display Tracks 
-        <h1 class="title has-text-centered">Top 5 Tracks</h1>
+
+        <h2 style="align-content: center;">Top 5 Tracks</h2>
+        <div class="card-container">
+            <div *ngFor="let track of tracksDialog">
+                <a class="card" id="mycard" target="_blank" rel="noopener">
+                  <div matBadge="{{ track.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false" class="demo-section">
+                 <a href="{{ track.url }}" target="_blank"><img src="{{ track.image }}" class="card-img-top" alt="tracksImage"/></a>
+                </div>
+                  <div class="card-body">
+                    <h5 class="card-title">{{ track.name }}</h5>
+                    <p class="card-text">Playcount: {{ track.playcount | number }}</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
         <div *ngFor="let track of tracksDialog">
           <div class="columns">
             <div class="column">
               <nav class="panel">
-                <div class="panel-block">
+                <div class="panel-block" id="mycard">
+                    <div class="media-left">
+                        <figure class="image is-128x128">
+                          <a href="{{ track.url }}" target="_blank"><img src="{{ track.image }}" alt="tracksImage"></a>
+                        </figure>
+                      </div>
                   <div class="column is-8">
                     <p class="title is-4 has-text-info"><a href="" target="_blank">{{ track.name }}</a></p>
                   </div>
@@ -49,7 +68,7 @@
                     <p class="subtitle has-white-text has-text-centered">Rank <br><span class="tag is-light">{{track.rank}}</span></p>
                   </div>
                   <div class="column">
-                    <p class="subtitle has-white-text has-text-centered">Listeners <br><span class="tag is-info">{{track.listeners}}</span></p>
+                    <p class="subtitle has-white-text has-text-centered">Playcount <br><span class="tag is-info">{{track.playcount}}</span></p>
                   </div>
                 </div>
               </nav>
@@ -64,6 +83,11 @@
              <div class="column">
                <nav class="panel">
                  <div class="panel-block">
+                    <div class="media-left">
+                        <figure class="image is-128x128">
+                          <a href="{{ album.url }}" target="_blank"><img src="{{ album.image }}" alt="albumsImage"></a>
+                        </figure>
+                      </div>
                    <div class="column is-8">
                      <p class="title is-4 has-text-info"><a href="{{ album.url }}" target="_blank">{{ album.name }}</a></p>
                    </div>

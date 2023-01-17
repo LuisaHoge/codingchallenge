@@ -10,6 +10,8 @@ import { DialogData, Track } from 'src/app/app.component';
 })
 export class ArtistSearchDialogComponent {
 
+  panelOpenState = false;
+  
   constructor(public dialogRef: MatDialogRef<ArtistSearchDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
   
   tracksDialog: Array<any> = [];

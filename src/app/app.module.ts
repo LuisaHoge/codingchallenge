@@ -15,6 +15,8 @@ import {MatDialogModule, MatDialog, MatDialogRef} from '@angular/material/dialog
 import { ArtistSearchDialogComponent } from './Dialogs/artist-search-dialog/artist-search-dialog.component'; 
 import {MatInputModule} from '@angular/material/input'; 
 import {MatButtonModule} from '@angular/material/button'; 
+import {MatExpansionModule} from '@angular/material/expansion'; 
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatTabsModule,
     MatDialogModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatExpansionModule,
+    MatIconModule
   ],
   providers: [ { 
     provide: MatDialogRef,

@@ -1,20 +1,41 @@
-#mycard{
-        all: unset;
-        border-radius: 4px;
-        border: 1px solid #eee;
-        background-color: #fafafa;
-        height: auto;
-        width: 200px;
-        margin: 0 8px 16px;
-        padding: 16px;
-        display: block;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.2s ease-in-out;
-        line-height: 24px;
-    }
+#mycard {
+  all: unset;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  height: auto;
+  width: 200px;
+  margin: 0 8px 16px;
+  padding: 16px;
+  display: block;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
 
-    .demo-section + .demo-section {
-        margin-top: 16px;
-      }
+.demo-section+.demo-section {
+  margin-top: 16px;
+}
+
+.searchArtistInput {
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.example-form {
+  scale: 80%;
+}
+
+.compareArtists{
+  height: 40px;
+  /*margin: 0 auto;*/
+  position: absolute;
+  right: 5px;
+}

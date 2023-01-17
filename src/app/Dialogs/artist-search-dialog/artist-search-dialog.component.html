@@ -5,89 +5,82 @@
     <div class="fadein">
         <!-- Display Artist -->
         <div class="box">
-          <article class="media">
-            <div class="media-left">
-              <figure class="image is-128x128">
-                <a href="{{ artists.url }}" target="_blank"><img src="{{ artists.image }}" alt="artistsImage"></a>
-              </figure>
-            </div>
-            <div class="media-content is-clipped">
-              <div class="content">
-                <a class="has-text-info" href="{{ artists.url }}" target="_blank"><strong>{{ artists.name }}</strong></a>
-                  <br> <div innerHTML="{{ artists.summary }}"></div>
-              </div>
-              <nav class="level is-mobile">
-                <div class="level-left">
-                  <div class="level-item">
-                    <div class="tags has-addons">
-                      <span class="tag is-dark">Listeners </span>
-                      <span class="tag is-info">{{ artists.listeners | number }}</span>
-                    </div>
-                  </div>
-                  <div class="level-item">
-                    <div class="tags has-addons">
-                      <span class="tag is-dark">Playcount</span>
-                      <span class="tag is-info"> {{ artists.playcount | number }}</span>
-                    </div>
-                  </div>
+            <article class="media">
+                <div class="media-left">
+                    <figure class="image is-128x128">
+                        <a href="{{ artists.url }}" target="_blank"><img src="{{ artists.image }}"
+                                alt="artistsImage"></a>
+                    </figure>
                 </div>
-              </nav>
-            </div>
-          </article>
+                <div class="media-content is-clipped">
+                    <div class="content">
+                        <a class="has-text-info" href="{{ artists.url }}" target="_blank"><strong>{{ artists.name
+                                }}</strong></a>
+                        <br>
+                        <div innerHTML="{{ artists.summary }}"></div>
+                    </div>
+                    <nav class="level is-mobile">
+                        <div class="level-left">
+                            <div class="level-item">
+                                <div class="tags has-addons">
+                                    <span class="tag is-dark">Listeners </span>
+                                    <span class="tag is-info">{{ artists.listeners | number }}</span>
+                                </div>
+                            </div>
+                            <div class="level-item">
+                                <div class="tags has-addons">
+                                    <span class="tag is-dark">Playcount</span>
+                                    <span class="tag is-info"> {{ artists.playcount | number }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </article>
         </div>
 
         <hr>
+        <!-- Display Tracks -->
         <div class="toptracks">
-        <h2 class="title has-text-centered">Top 5 Tracks</h2>
-    </div>
+            <h2 class="title has-text-centered">Top 5 Tracks</h2>
+        </div>
         <div class="card-container">
             <div *ngFor="let track of tracksDialog">
                 <a class="card" id="mycard" target="_blank" rel="noopener">
-                  <div matBadge="{{ track.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false" class="demo-section">
-                 <a href="{{ track.url }}" target="_blank"><img src="{{ track.image }}" class="card-img-top" alt="tracksImage"/></a>
-                </div>
-                  <div class="card-body">
-                    <h5 class="card-title">{{ track.name }}</h5>
-                    <p class="card-text">Playcount: {{ track.playcount | number }}</p>
-                  </div>
+                    <div matBadge="{{ track.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false"
+                        class="demo-section">
+                        <a href="{{ track.url }}" target="_blank"><img src="{{ track.image }}" class="card-img-top"
+                                alt="tracksImage" /></a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ track.name }}</h5>
+                        <p class="card-text">Playcount: {{ track.playcount | number }}</p>
+                    </div>
                 </a>
-              </div>
             </div>
+        </div>
 
-        
-      
-         <!-- Display Albums -->
-         <h1 class="title has-text-centered">Top 5 Albums</h1>
-         <div *ngFor="let album of albumsDialog">
-           <div class="columns">
-             <div class="column">
-               <nav class="panel">
-                 <div class="panel-block">
-                    <div class="media-left">
-                        <figure class="image is-128x128">
-                          <a href="{{ album.url }}" target="_blank"><img src="{{ album.image }}" alt="albumsImage"></a>
-                        </figure>
-                      </div>
-                   <div class="column is-8">
-                     <p class="title is-4 has-text-info"><a href="{{ album.url }}" target="_blank">{{ album.name }}</a></p>
-                   </div>
-                   <div class="column">
-                     <p class="subtitle has-white-text has-text-centered">Rank <br><span class="tag is-light">{{ album.rank }}</span></p>
-                   </div>
-                   <div class="column">
-                     <p class="subtitle has-white-text has-text-centered">Playcount <br><span class="tag is-info">{{ album.playcount | number }}</span></p>
-                   </div>
-                 </div>
-               </nav>
-             </div>
-           </div>
-         </div>
-      </div>
-    
-    
-    
- 
-</div>
-<div mat-dialog-actions>
-  <button mat-button>No Thanks</button>
+        <hr>
+
+        <!-- Display Albums -->
+        <div class="toptracks">
+            <h2 class="title has-text-centered">Top 5 Albums</h2>
+        </div>
+
+        <div class="card-container">
+            <div *ngFor="let album of albumsDialog">
+                <a class="card" id="mycard" target="_blank" rel="noopener">
+                    <div matBadge="{{ album.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false"
+                        class="demo-section">
+                        <a href="{{ album.url }}" target="_blank"><img src="{{ album.image }}" class="card-img-top"
+                                alt="albumsImage" /></a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ album.name }}</h5>
+                        <p class="card-text">Playcount: {{ album.playcount | number }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

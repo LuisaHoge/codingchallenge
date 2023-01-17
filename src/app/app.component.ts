@@ -14,7 +14,9 @@ export interface Artist {
 
 export interface DialogData {
   artist: Artist;
-  track: Track;
+  //track: Array<string>;
+  track1: Track;
+  track2: Track;
   album: Album;
 }
 
@@ -69,7 +71,6 @@ export class AppComponent {
  /*ngOnInit(){
   this.myTabSelectedIndexChange(0);
  }*/
- 
 
 
   artist: Artist = {
@@ -112,12 +113,15 @@ export class AppComponent {
 
   constructor(private apiService: ApiService, private dialog: MatDialog) { }
 
+  tracknames: Array<string> = [];
+
   openDialog(): void {
     const dialogRef = this.dialog.open(ArtistSearchDialogComponent, {
-    data: {artist: this.artist, track: this.tracks[0], album: this.albums}});
+    data: {artist: this.artist, track1: this.tracks[0], track2:this.tracks[1], album: this.albums}});
   }
 
   searchMusic(artist: string) {
+    this.tracknames = [];
     this.apiService.searchMusic(artist, 'getinfo').subscribe((res: any) => {
       this.artist.name = res.artist.name;
       this.artist.image = res.artist.image[2]['#text'];
@@ -127,14 +131,29 @@ export class AppComponent {
       this.artist.url = res.artist.url;
     });
 
-    this.apiService.searchMusic(artist, 'gettoptracks').subscribe((res: any) => {
+ 
+   this.apiService.searchMusic(artist, 'gettoptracks').subscribe((res: any) => {
         this.tracks[0].name = res.toptracks.track[0].name;
+  
+        this.tracknames.push(this.tracks[0].name);
+        
         this.tracks[0].url = res.toptracks.track[0].url;
+
+
         this.tracks[0].listeners = res.toptracks.track[0].listeners;
+
         this.tracks[1].name = res.toptracks.track[1].name;
+        this.tracknames.push(this.tracks[1].name);
+
+
         this.tracks[1].url = res.toptracks.track[1].url;
         this.tracks[1].listeners = res.toptracks.track[1].listeners;
+
         this.tracks[2].name = res.toptracks.track[2].name;
+        this.tracknames.push(this.tracks[2].name);
+
+        console.log(this.tracknames);
+
         this.tracks[2].url = res.toptracks.track[2].url;
         this.tracks[2].listeners = res.toptracks.track[2].listeners;
         this.tracks[3].name = res.toptracks.track[3].name;

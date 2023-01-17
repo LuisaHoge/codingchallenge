@@ -20,6 +20,13 @@ export class ArtistSearchDialogComponent {
     return this.data.album;
    }
 
+   arr: Array<any> = [];
+   
+   butti(){
+    this.arr.push(this.data.track1);
+    this.arr.push(this.data.track2);
+    console.log(this.arr);
+   }
 
   /* get tracks(){
     return this.data.track;
@@ -28,12 +35,5 @@ export class ArtistSearchDialogComponent {
   /* get tracks(): Track {
     return this.data.track;
    }*/
-
-
-
-
-  ngOnInit(){
-    console.log(this.data.track);
-  }
 }
 

@@ -1,8 +1,44 @@
-.compareArtists{
+.compareArtists {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	align-items: baseline;
 	align-content: center;
+}
+
+mat-grid-tile {
+	background: lightblue;
+}
+
+.parent {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr) 0.5fr repeat(3, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+}
+
+.div1 {
+	grid-area: 1 / 1 / 6 / 4;
+	background-color: #fafaff;
+}
+
+.div2 {
+	grid-area: 1 / 5 / 6 / 8;
+	background-color: #fafaff;
+}
+
+
+.mat-raised-button,
+.buttonform {
+	display: inline-block;
+}
+
+.buttonform {
+	margin-right: 2%;
+}
+
+.mat-raised-button {
+	margin-bottom: 5%;
 }

@@ -3,51 +3,11 @@ import { ApiService } from '../app/Services/api.service';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ArtistSearchDialogComponent } from './Dialogs/artist-search-dialog/artist-search-dialog.component';
 import { CompareartistsComponent } from './Dialogs/Compare Artists/compareartists/compareartists.component';
-
-export interface Artist {
-  name: string;
-  image: string;
-  listeners: number;
-  playcount: number;
-  summary: string;
-  url: string;
-}
-
-export interface DialogData {
-  artist: Artist;
-  track0: Track;
-  track1: Track;
-  track2: Track;
-  track3: Track;
-  track4: Track;
-  album0: Album;
-  album1: Album;
-  album2: Album;
-  album3: Album;
-  album4: Album;
-}
-
-export interface Track {
-  name: string;
-  image: string;
-  playcount: number;
-  rank: number;
-  url: string;
-}
-
-export interface Album {
-  name: string;
-  image: string;
-  playcount: number;
-  rank: number;
-  url: string;
-}
-
-export interface TopArtistsInCountry {
-  rank: number;
-  name: string;
-  playcount: number;
-}
+import { Artist } from './models/Artist';
+import { DialogData } from './models/DialogData';
+import { Track } from './models/Track';
+import { Album } from './models/Album';
+import { TopArtistsInCountry } from './models/TopArtistsInCountry';
 
 @Component({
   selector: 'app-root',
@@ -59,7 +19,6 @@ export class AppComponent {
 
 
   title = 'lastFmApp';
-
   searchStr: string = "";
 
 

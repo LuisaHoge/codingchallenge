@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DialogData, Track } from 'src/app/app.component';
-
+import { DialogData } from 'src/app/models/DialogData';
 
 @Component({
   selector: 'app-artist-search-dialog',

@@ -18,6 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion'; 
 import {MatIconModule} from '@angular/material/icon';
 import { CompareartistsComponent } from './Dialogs/Compare Artists/compareartists/compareartists.component';
+import {MatGridListModule} from '@angular/material/grid-list'; 
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CompareartistsComponent } from './Dialogs/Compare Artists/compareartist
     MatInputModule,
     MatButtonModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule,
+    MatGridListModule
   ],
   providers: [ { 
     provide: MatDialogRef,

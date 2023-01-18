@@ -167,12 +167,14 @@
       </form>
     </div>
     <button mat-raised-button color="warn" (click)="searchMusic(searchStr)" [disabled]="!searchStr">Search</button>
+    
     <div class="compareArtists">
       <button mat-raised-button color="warn" (click)="openCompareArtistDialog()">Compare Artists</button>
     </div>
 </div>
 
 <div class="content" role="main">
+  <h1 id="title"> {{title}}</h1>
   <h1 class="title has-text-centered">Top 10 Artists in 3 Countries</h1>
 
   <mat-tab-group (selectedIndexChange)="myTabSelectedIndexChange($event)">

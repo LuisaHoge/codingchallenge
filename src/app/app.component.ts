@@ -18,7 +18,7 @@ import { TopArtistsInCountry } from './models/TopArtistsInCountry';
 export class AppComponent {
 
 
-  title = 'lastFmApp';
+  title = 'Lastfm Coding Challenge';
   searchStr: string = "";
 
 

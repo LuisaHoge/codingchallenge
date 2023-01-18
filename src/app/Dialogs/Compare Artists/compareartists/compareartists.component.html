@@ -1,12 +1,64 @@
-<h1 mat-dialog-title>Hi </h1>
+<h1 mat-dialog-title>Compare Artists </h1>
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field appearance="fill">
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput>
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button cdkFocusInitial>Ok</button>
+
+    <div class="compareArtists">
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <mat-label>Search first Artist</mat-label>
+                <input matInput type="text" name="searchStr" [(ngModel)]="searchStr" placeholder="Search Artists"
+                    required>
+            </mat-form-field>
+        </form>
+
+        <button mat-raised-button color="warn" (click)="searchMusic(searchStr)" [disabled]="!searchStr">Search</button>
+
+        <div class="fadein">
+            <!-- Display Artist -->
+            <div class="box">
+                <article class="media">
+                    <div class="media-left">
+                        <figure class="image is-128x128">
+                            <a href="{{ artists.url }}" target="_blank"><img src="{{ artists.image }}"
+                                    alt="artistsImage"></a>
+                        </figure>
+                    </div>
+                    <div class="media-content is-clipped">
+                        <div class="content">
+                            <a class="has-text-info" href="{{ artists.url }}" target="_blank"><strong>{{ artists.name
+                                    }}</strong></a>
+                            <br>
+                            <div innerHTML="{{ artists.summary }}"></div>
+                        </div>
+                        <nav class="level is-mobile">
+                            <div class="level-left">
+                                <div class="level-item">
+                                    <div class="tags has-addons">
+                                        <span class="tag is-dark">Listeners </span>
+                                        <span class="tag is-info">{{ artists.listeners | number }}</span>
+                                    </div>
+                                </div>
+                                <div class="level-item">
+                                    <div class="tags has-addons">
+                                        <span class="tag is-dark">Playcount</span>
+                                        <span class="tag is-info"> {{ artists.playcount | number }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </article>
+            </div>
+            
+        <br>
+
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <mat-label>Search second Artist</mat-label>
+                <input matInput type="text" name="searchStr2" [(ngModel)]="searchStr2" placeholder="Search Artists"
+                    required>
+            </mat-form-field>
+        </form>
+
+        <button mat-raised-button color="warn" (click)="searchMusic(searchStr2)" [disabled]="!searchStr2">Search</button>
+    </div>
 </div>

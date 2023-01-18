@@ -19,6 +19,9 @@ export class CompareartistsComponent {
   searchStr: string = "";
   searchStr2: string = "";
 
+  visability1: boolean = false;
+  visability2: boolean = false;
+
   artist1: Artist = {
     name: '',
     image: '',
@@ -46,6 +49,7 @@ export class CompareartistsComponent {
       this.artist1.summary = res.artist.bio.summary;
       this.artist1.url = res.artist.url;
     });
+    this.visability1 = true;
   }
 
   compareArtist2(artist: string) {
@@ -57,6 +61,7 @@ export class CompareartistsComponent {
       this.artist2.summary = res.artist.bio.summary;
       this.artist2.url = res.artist.url;
     });
+    this.visability2 = true;
   }
 
 

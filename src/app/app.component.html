@@ -160,6 +160,9 @@
         <mat-form-field class="example-full-width">
           <mat-label>Search Artists</mat-label>
           <input matInput type="text" name="searchStr" [(ngModel)]="searchStr" placeholder="Search Artists" required>
+          <button *ngIf="searchStr" matSuffix mat-icon-button aria-label="Clear" (click)="searchStr=''">
+            <mat-icon>close</mat-icon>
+          </button>
         </mat-form-field>
       </form>
     </div>

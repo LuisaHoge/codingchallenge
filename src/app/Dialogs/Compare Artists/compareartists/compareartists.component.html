@@ -18,7 +18,7 @@
             <button mat-raised-button color="warn" (click)="compareArtist1(searchStr)"
                 [disabled]="!searchStr">Search</button>
 
-            <div class="fadein">
+            <div class="fadein" *ngIf="visability1">
                 <!-- Display Artist1 -->
                 <div class="box">
                     <article class="media">
@@ -75,7 +75,7 @@
             <button mat-raised-button color="warn" (click)="compareArtist2(searchStr2)"
                 [disabled]="!searchStr2">Search</button>
 
-            <div class="fadein">
+            <div class="fadein" *ngIf="visability2">
                 <!-- Display Artist 2 -->
                 <div class="box">
                     <article class="media">

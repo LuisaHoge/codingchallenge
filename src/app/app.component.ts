@@ -20,7 +20,7 @@ export class AppComponent {
   constructor(private apiService: ApiService, private dialog: MatDialog, private CAdialog: MatDialog) { }
 
   //Variables
-  title = 'Lastfm Coding Challenge';
+  title = 'LastFM API Coding Challenge';
   searchStr: string = "";
   options: Array<string> = ["", "", ""];
 

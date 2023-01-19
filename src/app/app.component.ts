@@ -72,7 +72,6 @@ export class AppComponent {
 
   //Check which tab/country was clicked -> search Top Artists in Country
   myTabSelectedIndexChange(index: number) {
-    console.log('Selected index: ' + index);
     if (index == 0) {
       this.searchTopArtists("New Zealand");
     }

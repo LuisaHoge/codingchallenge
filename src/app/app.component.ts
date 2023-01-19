@@ -192,6 +192,7 @@ export class AppComponent {
       this.albums[4].image = res.topalbums.album[4].image[2]['#text'];
     });
     this.openDialog();
+    this.searchStr = "";
   }
 
   searchTopArtists(countryname: string) {

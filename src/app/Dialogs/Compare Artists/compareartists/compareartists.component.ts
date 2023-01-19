@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from 'src/app/Services/api.service';
 import { Artist } from 'src/app/models/Artist';
-
+import { SearchArtist } from 'src/app/models/SearchArtists';
 
 @Component({
   selector: 'app-compareartists',
@@ -13,7 +13,6 @@ export class CompareartistsComponent {
 
   constructor(
     public dialogRef: MatDialogRef<CompareartistsComponent>,
-    // @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private apiService: ApiService) { }
 
   searchStr: string = "";
@@ -21,6 +20,7 @@ export class CompareartistsComponent {
 
   visability1: boolean = false;
   visability2: boolean = false;
+  options: Array<string> = ["", "", ""];
 
   artist1: Artist = {
     name: '',
@@ -40,6 +40,29 @@ export class CompareartistsComponent {
     url: ''
   };
 
+  searchArtist: SearchArtist = {
+    name1: '',
+    name2: '',
+    name3: ''
+  };
+
+
+  onSearchChange(searchValue: string): void {
+    if (searchValue != "") {
+      this.options = [];
+
+      this.apiService.artistSearch(searchValue).subscribe((res: any) => {
+        this.searchArtist.name1 = res.results.artistmatches.artist[0].name;
+        this.searchArtist.name2 = res.results.artistmatches.artist[1].name;
+        this.searchArtist.name3 = res.results.artistmatches.artist[2].name;
+      });
+      this.options.push(this.searchArtist.name1, this.searchArtist.name2, this.searchArtist.name3);
+    }
+    else {
+      this.options = [];
+    }
+  }
+
   compareArtist1(artist: string) {
     this.apiService.getArtistInfo(artist, 'getinfo').subscribe((res: any) => {
       this.artist1.name = res.artist.name;
@@ -50,6 +73,7 @@ export class CompareartistsComponent {
       this.artist1.url = res.artist.url;
     });
     this.visability1 = true;
+    this.searchStr = "";
   }
 
   compareArtist2(artist: string) {
@@ -62,12 +86,6 @@ export class CompareartistsComponent {
       this.artist2.url = res.artist.url;
     });
     this.visability2 = true;
+    this.searchStr2 = "";
   }
-
-
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 }

@@ -155,28 +155,35 @@
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-    <div class="searchArtistInput">
-      <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>Search Artists</mat-label>
-          <input matInput type="text" name="searchStr" [(ngModel)]="searchStr" placeholder="Search Artists" required>
-          <button *ngIf="searchStr" matSuffix mat-icon-button aria-label="Clear" (click)="searchStr=''">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
-      </form>
-    </div>
-    <button mat-raised-button color="warn" (click)="searchMusic(searchStr)" [disabled]="!searchStr">Search</button>
-    
-    <div class="compareArtists">
-      <button mat-raised-button color="warn" (click)="openCompareArtistDialog()">Compare Artists</button>
-    </div>
+  <div class="searchArtistInput">
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Search Artists</mat-label>
+        <input matInput type="text" name="searchStr" [(ngModel)]="searchStr" placeholder="Search Artists" required
+          (input)="onSearchChange(searchStr)" [matAutocomplete]="auto">
+
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+
+        <button *ngIf="searchStr" matSuffix mat-icon-button aria-label="Clear" (click)="searchStr=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </div>
+  <button mat-raised-button color="warn" (click)="searchMusic(searchStr)" [disabled]="!searchStr">Search</button>
+
+  <div class="compareArtists">
+    <button mat-raised-button color="warn" (click)="openCompareArtistDialog()">Compare Artists</button>
+  </div>
 </div>
 
 <div class="content" role="main">
   <h1 id="title"> {{title}}</h1>
   <h1 class="title has-text-centered">Top 10 Artists in 3 Countries</h1>
-
   <mat-tab-group (selectedIndexChange)="myTabSelectedIndexChange($event)">
     <mat-tab label="New Zealand (64)">
 

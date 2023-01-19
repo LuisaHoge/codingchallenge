@@ -8,6 +8,7 @@ import { DialogData } from './models/DialogData';
 import { Track } from './models/Track';
 import { Album } from './models/Album';
 import { TopArtistsInCountry } from './models/TopArtistsInCountry';
+import { SearchArtist } from './models/SearchArtists';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +18,11 @@ import { TopArtistsInCountry } from './models/TopArtistsInCountry';
 
 export class AppComponent {
 
+  constructor(private apiService: ApiService, private dialog: MatDialog, private CAdialog: MatDialog) { }
 
   title = 'Lastfm Coding Challenge';
   searchStr: string = "";
-
+  options: Array<string> = ["", "", ""];
 
   myTabSelectedIndexChange(index: number) {
     console.log('Selected index: ' + index);
@@ -35,11 +37,33 @@ export class AppComponent {
     }
   }
 
+  onSearchChange(searchValue: string): void {
+    if (searchValue != "") {
+      this.options = [];
+
+      this.apiService.artistSearch(searchValue).subscribe((res: any) => {
+        this.searchArtist.name1 = res.results.artistmatches.artist[0].name;
+        this.searchArtist.name2 = res.results.artistmatches.artist[1].name;
+        this.searchArtist.name3 = res.results.artistmatches.artist[2].name;
+      });
+      this.options.push(this.searchArtist.name1, this.searchArtist.name2, this.searchArtist.name3);
+    }
+    else {
+      this.options = [];
+    }
+  }
+
+
 
   /*ngOnInit(){
    this.myTabSelectedIndexChange(0);
   }*/
 
+  searchArtist: SearchArtist = {
+    name1: '',
+    name2: '',
+    name3: ''
+  };
 
   artist: Artist = {
     name: '',
@@ -79,9 +103,6 @@ export class AppComponent {
     { name: '', image: '', url: '', rank: 5, playcount: 0 },
   ];
 
-  constructor(private apiService: ApiService, private dialog: MatDialog, private CAdialog: MatDialog) { }
-
-
   openDialog(): void {
     const dialogRef = this.dialog.open(ArtistSearchDialogComponent, {
       data: {
@@ -100,14 +121,14 @@ export class AppComponent {
     });
   }
 
-  openCompareArtistDialog(): void{
+  openCompareArtistDialog(): void {
     const dialogRef = this.CAdialog.open(CompareartistsComponent, {
       data: {}
     });
   }
 
   searchMusic(artist: string) {
-    this.apiService.searchMusic(artist, 'getinfo').subscribe((res: any) => {
+    this.apiService.getArtistInfo(artist, 'getinfo').subscribe((res: any) => {
       this.artist.name = res.artist.name;
       this.artist.image = res.artist.image[2]['#text'];
       this.artist.listeners = res.artist.stats.listeners;
@@ -117,7 +138,7 @@ export class AppComponent {
     });
 
 
-    this.apiService.searchMusic(artist, 'gettoptracks').subscribe((res: any) => {
+    this.apiService.getArtistInfo(artist, 'gettoptracks').subscribe((res: any) => {
       this.tracks[0].name = res.toptracks.track[0].name;
       this.tracks[0].url = res.toptracks.track[0].url;
       this.tracks[0].playcount = res.toptracks.track[0].playcount;
@@ -144,7 +165,7 @@ export class AppComponent {
       this.tracks[4].image = res.toptracks.track[4].image[2]['#text'];
     });
 
-    this.apiService.searchMusic(artist, 'gettopalbums').subscribe((res: any) => {
+    this.apiService.getArtistInfo(artist, 'gettopalbums').subscribe((res: any) => {
       this.albums[0].name = res.topalbums.album[0].name;
       this.albums[0].url = res.topalbums.album[0].url;
       this.albums[0].playcount = res.topalbums.album[0].playcount;
@@ -211,7 +232,7 @@ export class AppComponent {
     // this.searchStr = "";
   }
 
-  compareArtists(){
+  compareArtists() {
     this.openDialog();
   }
 }

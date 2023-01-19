@@ -41,7 +41,7 @@ export class CompareartistsComponent {
   };
 
   compareArtist1(artist: string) {
-    this.apiService.searchMusic(artist, 'getinfo').subscribe((res: any) => {
+    this.apiService.getArtistInfo(artist, 'getinfo').subscribe((res: any) => {
       this.artist1.name = res.artist.name;
       this.artist1.image = res.artist.image[2]['#text'];
       this.artist1.listeners = res.artist.stats.listeners;
@@ -53,7 +53,7 @@ export class CompareartistsComponent {
   }
 
   compareArtist2(artist: string) {
-    this.apiService.searchMusic(artist, 'getinfo').subscribe((res: any) => {
+    this.apiService.getArtistInfo(artist, 'getinfo').subscribe((res: any) => {
       this.artist2.name = res.artist.name;
       this.artist2.image = res.artist.image[2]['#text'];
       this.artist2.listeners = res.artist.stats.listeners;

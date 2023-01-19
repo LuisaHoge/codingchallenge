@@ -10,7 +10,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatTabsModule} from '@angular/material/tabs'; 
-//import {MatDialogModule} from '@angular/material/dialog';
 import {MatDialogModule, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { ArtistSearchDialogComponent } from './Dialogs/artist-search-dialog/artist-search-dialog.component'; 
 import {MatInputModule} from '@angular/material/input'; 
@@ -19,6 +18,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import { CompareartistsComponent } from './Dialogs/Compare Artists/compareartists/compareartists.component';
 import {MatGridListModule} from '@angular/material/grid-list'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
 
 @NgModule({
   declarations: [
@@ -40,7 +40,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatButtonModule,
     MatExpansionModule,
     MatIconModule,
-    MatGridListModule
+    MatGridListModule,
+    MatAutocompleteModule
   ],
   providers: [ { 
     provide: MatDialogRef,

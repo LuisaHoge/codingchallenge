@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ApiService } from 'src/app/Services/api.service';
 import { Artist } from 'src/app/models/Artist';
 import { SearchArtist } from 'src/app/models/SearchArtists';
@@ -11,10 +11,9 @@ import { SearchArtist } from 'src/app/models/SearchArtists';
 })
 export class CompareartistsComponent {
 
-  constructor(
-    public dialogRef: MatDialogRef<CompareartistsComponent>,
-    private apiService: ApiService) { }
+  constructor(public dialogRef: MatDialogRef<CompareartistsComponent>, private apiService: ApiService) { }
 
+  //Variables
   searchStr: string = "";
   searchStr2: string = "";
 
@@ -22,6 +21,7 @@ export class CompareartistsComponent {
   visability2: boolean = false;
   options: Array<string> = ["", "", ""];
 
+  //Interfaces
   artist1: Artist = {
     name: '',
     image: '',
@@ -47,10 +47,10 @@ export class CompareartistsComponent {
   };
 
 
+  // if input from search input changes -> show matching artist results as auto-complete function under search input
   onSearchChange(searchValue: string): void {
     if (searchValue != "") {
       this.options = [];
-
       this.apiService.artistSearch(searchValue).subscribe((res: any) => {
         this.searchArtist.name1 = res.results.artistmatches.artist[0].name;
         this.searchArtist.name2 = res.results.artistmatches.artist[1].name;
@@ -63,6 +63,7 @@ export class CompareartistsComponent {
     }
   }
 
+  //get artist 1 infos from api 
   compareArtist1(artist: string) {
     this.apiService.getArtistInfo(artist, 'getinfo').subscribe((res: any) => {
       this.artist1.name = res.artist.name;
@@ -76,6 +77,7 @@ export class CompareartistsComponent {
     this.searchStr = "";
   }
 
+   //get artist 2 infos from api
   compareArtist2(artist: string) {
     this.apiService.getArtistInfo(artist, 'getinfo').subscribe((res: any) => {
       this.artist2.name = res.artist.name;

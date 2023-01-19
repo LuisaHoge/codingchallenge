@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { count } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,8 @@ export class ApiService {
     return this.http.get(`http://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country=${countryname}&api_key=${this.API_KEY_LASTFM}&format=json`);
   }
 
-  artistSearch(artistName: string){
+  //used for autocomplete under search input
+  artistSearch(artistName: string) {
     return this.http.get(`http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${artistName}&api_key=${this.API_KEY_LASTFM}&format=json`);
   }
 }

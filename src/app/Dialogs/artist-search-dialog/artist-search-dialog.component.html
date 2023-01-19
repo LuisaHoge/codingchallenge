@@ -1,21 +1,18 @@
 <h1 mat-dialog-title>{{artists.name}}</h1>
 <div mat-dialog-content>
 
-
+    <!-- Display Artist Infos -->
     <div class="fadein">
-        <!-- Display Artist -->
         <div class="box">
             <article class="media">
                 <div class="media-left">
                     <figure class="image is-128x128">
-                        <a href="{{ artists.url }}" target="_blank"><img src="{{ artists.image }}"
-                                alt="artistsImage"></a>
+                        <a href="{{ artists.url }}" target="_blank"><img src="{{ artists.image }}" alt="artistsImage"></a>
                     </figure>
                 </div>
                 <div class="media-content is-clipped">
                     <div class="content">
-                        <a class="has-text-info" href="{{ artists.url }}" target="_blank"><strong>{{ artists.name
-                                }}</strong></a>
+                        <a class="has-text-info" href="{{ artists.url }}" target="_blank"><strong>{{ artists.name}}</strong></a>
                         <br>
                         <div innerHTML="{{ artists.summary }}"></div>
                     </div>
@@ -40,17 +37,14 @@
         </div>
 
         <hr>
+
         <!-- Display Tracks -->
-        <div class="toptracks">
-            <h2 class="title has-text-centered">Top 5 Tracks</h2>
-        </div>
+        <div class="toptracks"><h2 class="title has-text-centered">Top 5 Tracks</h2></div>
         <div class="card-container">
             <div *ngFor="let track of tracksDialog">
                 <a class="card" id="mycard" target="_blank" rel="noopener">
-                    <div matBadge="{{ track.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false"
-                        class="demo-section">
-                        <a href="{{ track.url }}" target="_blank"><img src="{{ track.image }}" class="card-img-top"
-                                alt="tracksImage" /></a>
+                    <div matBadge="{{ track.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false" class="demo-section">
+                        <a href="{{ track.url }}" target="_blank"><img src="{{ track.image }}" class="card-img-top"alt="tracksImage"/></a>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ track.name }}</h5>
@@ -63,17 +57,12 @@
         <hr>
 
         <!-- Display Albums -->
-        <div class="toptracks">
-            <h2 class="title has-text-centered">Top 5 Albums</h2>
-        </div>
-
+        <div class="toptracks"><h2 class="title has-text-centered">Top 5 Albums</h2></div>
         <div class="card-container">
             <div *ngFor="let album of albumsDialog">
                 <a class="card" id="mycard" target="_blank" rel="noopener">
-                    <div matBadge="{{ album.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false"
-                        class="demo-section">
-                        <a href="{{ album.url }}" target="_blank"><img src="{{ album.image }}" class="card-img-top"
-                                alt="albumsImage" /></a>
+                    <div matBadge="{{ album.rank }}" matBadgeSize="large" matBadgeColor="warn" matBadgeOverlap="false" class="demo-section">
+                        <a href="{{ album.url }}" target="_blank"><img src="{{ album.image }}" class="card-img-top" alt="albumsImage" /></a>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ album.name }}</h5>

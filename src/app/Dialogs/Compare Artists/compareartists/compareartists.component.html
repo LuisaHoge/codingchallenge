@@ -1,45 +1,41 @@
 <h1 mat-dialog-title>Compare Artists </h1>
 <div mat-dialog-content>
 
+    <!--Search for Artist 1-->
     <div class="parent">
         <div class="div1">
             <div class="buttonform">
                 <form class="example-form">
                     <mat-form-field class="example-full-width">
                         <mat-label>Search first Artist</mat-label>
-                        <input matInput type="text" name="searchStr" [(ngModel)]="searchStr"
-                            placeholder="Search Artists" required (input)="onSearchChange(searchStr)" [matAutocomplete]="auto">
-
-                            <mat-autocomplete #auto="matAutocomplete">
-                              <mat-option *ngFor="let option of options" [value]="option">
+                        <input matInput type="text" name="searchStr" [(ngModel)]="searchStr" placeholder="Search Artists" required (input)="onSearchChange(searchStr)" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of options" [value]="option">
                                 {{option}}
-                              </mat-option>
-                            </mat-autocomplete>
+                            </mat-option>
+                        </mat-autocomplete>
                 
-                            <button *ngIf="searchStr" matSuffix mat-icon-button aria-label="Clear" (click)="searchStr=''">
-                                <mat-icon>close</mat-icon>
-                              </button>
+                        <button *ngIf="searchStr" matSuffix mat-icon-button aria-label="Clear" (click)="searchStr=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
                     </mat-form-field>
                 </form>
             </div>
-            <button mat-raised-button color="warn" (click)="compareArtist1(searchStr)"
-                [disabled]="!searchStr">Search</button>
 
+            <button mat-raised-button color="warn" (click)="compareArtist1(searchStr)" [disabled]="!searchStr">Search</button>
+
+            <!--Display Artist 1-->
             <div class="fadein" *ngIf="visability1">
-                <!-- Display Artist1 -->
                 <div class="box">
                     <article class="media">
                         <div class="media-left">
                             <figure class="image is-128x128">
-                                <a href="{{ artist1.url }}" target="_blank"><img src="{{ artist1.image }}"
-                                        alt="artist1Image"></a>
+                                <a href="{{ artist1.url }}" target="_blank"><img src="{{ artist1.image }}" alt="artist1Image"></a>
                             </figure>
                         </div>
                         <div class="media-content is-clipped">
                             <div class="content">
-                                <a class="has-text-info" href="{{ artist1.url }}" target="_blank"><strong>{{
-                                        artist1.name
-                                        }}</strong></a>
+                                <a class="has-text-info" href="{{ artist1.url }}" target="_blank"><strong>{{artist1.name}}</strong></a>
                                 <br>
                                 <div innerHTML="{{ artist1.summary }}"></div>
                             </div>
@@ -65,20 +61,18 @@
             </div>
         </div>
 
-
+        <!--Search for Artist 2-->
         <div class="div2">
             <div class="buttonform">
                 <form class="example-form">
                     <mat-form-field class="example-full-width">
                         <mat-label>Search second Artist</mat-label>
-                        <input matInput type="text" name="searchStr2" [(ngModel)]="searchStr2"
-                            placeholder="Search Artists" required (input)="onSearchChange(searchStr2)" [matAutocomplete]="auto">
-
-                            <mat-autocomplete #auto="matAutocomplete">
-                              <mat-option *ngFor="let option of options" [value]="option">
+                        <input matInput type="text" name="searchStr2" [(ngModel)]="searchStr2" placeholder="Search Artists" required (input)="onSearchChange(searchStr2)" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of options" [value]="option">
                                 {{option}}
-                              </mat-option>
-                            </mat-autocomplete>
+                            </mat-option>
+                        </mat-autocomplete>
 
                         <button *ngIf="searchStr2" matSuffix mat-icon-button aria-label="Clear" (click)="searchStr2=''">
                             <mat-icon>close</mat-icon>
@@ -86,24 +80,22 @@
                     </mat-form-field>
                 </form>
             </div>
+
             <button mat-raised-button color="warn" (click)="compareArtist2(searchStr2)"
                 [disabled]="!searchStr2">Search</button>
 
+            <!--Display Artist 2-->
             <div class="fadein" *ngIf="visability2">
-                <!-- Display Artist 2 -->
                 <div class="box">
                     <article class="media">
                         <div class="media-left">
                             <figure class="image is-128x128">
-                                <a href="{{ artist2.url }}" target="_blank"><img src="{{ artist2.image }}"
-                                        alt="artist2Image"></a>
+                                <a href="{{ artist2.url }}" target="_blank"><img src="{{ artist2.image }}" alt="artist2Image"></a>
                             </figure>
                         </div>
                         <div class="media-content is-clipped">
                             <div class="content">
-                                <a class="has-text-info" href="{{ artist2.url }}" target="_blank"><strong>{{
-                                        artist2.name
-                                        }}</strong></a>
+                                <a class="has-text-info" href="{{ artist2.url }}" target="_blank"><strong>{{artist2.name}}</strong></a>
                                 <br>
                                 <div innerHTML="{{ artist2.summary }}"></div>
                             </div>
@@ -129,10 +121,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 </div>
